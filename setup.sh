@@ -60,7 +60,7 @@ docker run -d \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     --restart always \
-    portainer/portainer-ce:2.21.0
+    portainer/portainer-ce:2.21.3
 
 # Lancement de Nginx
 docker run -d \
