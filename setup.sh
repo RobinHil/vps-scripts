@@ -60,7 +60,7 @@ docker run -d \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     --restart always \
-    portainer/portainer-ce:latest
+    portainer/portainer-ce:2.21.0
 
 # Lancement de Nginx
 docker run -d \
@@ -70,4 +70,4 @@ docker run -d \
     -v /var/local/proxy/nginx.conf:/etc/nginx/nginx.conf:ro \
     -v /var/local/proxy/conf.d:/etc/nginx/conf.d:ro \
     --restart always \
-    nginx:latest
+    nginx:1.27.2
