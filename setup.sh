@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Création du répertoire pour les configurations nginx
+# Create directory for nginx configurations
 mkdir -p /var/local/proxy/conf.d
 
-# Configuration principale de nginx
+# Main nginx configuration
 cat > /var/local/proxy/nginx.conf << 'EOF'
 user  nginx;
 worker_processes  auto;
@@ -32,7 +32,7 @@ http {
 }
 EOF
 
-# Configuration pour portainer
+# Configuration for portainer
 cat > /var/local/proxy/conf.d/portainer.robinhi.conf << 'EOF'
 server {
     listen 80;
@@ -48,10 +48,10 @@ server {
 }
 EOF
 
-# Création du réseau Docker
+# Create Docker network
 docker network create proxy_network
 
-# Lancement de Portainer
+# Launch Portainer
 docker volume create portainer_data
 docker run -d \
     -p 9443:9443 \
@@ -62,7 +62,7 @@ docker run -d \
     --restart always \
     portainer/portainer-ce:latest
 
-# Lancement de Nginx
+# Launch Nginx
 docker run -d \
     --name nginx_proxy \
     --network proxy_network \
