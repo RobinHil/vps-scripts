@@ -33,10 +33,10 @@ http {
 EOF
 
 # Configuration pour portainer
-cat > /var/local/proxy/conf.d/robinh.conf << 'EOF'
+cat > /var/local/proxy/conf.d/portainer.robinhi.conf << 'EOF'
 server {
     listen 80;
-    server_name portainer.robinh.fr;
+    server_name portainer.robinhi.fr;
 
     location / {
         proxy_pass https://portainer:9443;
@@ -60,7 +60,7 @@ docker run -d \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     --restart always \
-    portainer/portainer-ce:2.21.3
+    portainer/portainer-ce:latest
 
 # Lancement de Nginx
 docker run -d \
@@ -70,4 +70,4 @@ docker run -d \
     -v /var/local/proxy/nginx.conf:/etc/nginx/nginx.conf:ro \
     -v /var/local/proxy/conf.d:/etc/nginx/conf.d:ro \
     --restart always \
-    nginx:1.27.2
+    nginx:latest
